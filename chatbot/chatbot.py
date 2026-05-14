@@ -4,7 +4,6 @@ import datetime
 
 memory = []
 
-
 def chatbot_response(user_input):
 
     text = user_input.lower().strip()
