@@ -55,7 +55,6 @@ if user_genre in movies:
 
     for index, movie in enumerate(recommended_movies, start=1):
         print(f"{index}. {movie}")
-
 else:
 
     print("\nGenre not available.")
