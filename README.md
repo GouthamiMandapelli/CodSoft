@@ -143,10 +143,6 @@ All projects in this repository were independently designed and implemented for 
 
 <div align="left">
 
-### Thank You
-
-Thank you for visiting this repository.
-
 
 </div>
 
