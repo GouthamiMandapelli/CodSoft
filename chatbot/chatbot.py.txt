@@ -1,0 +1,112 @@
+import random
+import datetime
+
+
+memory = []
+
+
+def chatbot_response(user_input):
+
+    text = user_input.lower().strip()
+
+    if text in ["hi", "hello", "hey"]:
+        return random.choice([
+            "Hello!",
+            "Hi there!",
+            "Hey! How can I help you?"
+        ])
+
+    
+    elif "your name" in text or "who are you" in text:
+        return "I am an AI Chatbot developed using Python."
+
+   
+    elif "time" in text:
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        return f"Current time is {current_time}"
+
+    
+    elif "date" in text:
+        current_date = datetime.datetime.now().strftime("%d-%m-%Y")
+        return f"Today's date is {current_date}"
+
+    
+    elif "internship" in text:
+        return "Internships help improve practical skills and experience."
+
+    elif "python" in text or "programming" in text:
+        return "Python, Java, C, C++, and JavaScript are popular languages."
+
+    
+    elif text == "ai" or "artificial intelligence" in text:
+        return "Artificial Intelligence enables machines to mimic human intelligence."
+
+    elif "study" in text or "exam" in text:
+        return "Daily practice and consistency are important for success."
+
+    
+    elif "motivation" in text or "motivate me" in text:
+        return "Believe in yourself and keep learning every day."
+
+    elif "joke" in text:
+        jokes = [
+            "Why do programmers prefer dark mode? Because light attracts bugs!",
+            "Why was the computer cold? Because it left its Windows open!",
+            "Python is loved because it is simple and powerful!"
+        ]
+        return random.choice(jokes)
+
+    elif "remember" in text:
+
+        if len(memory) == 0:
+            return "No recent chats available."
+
+        return "Recent chats: " + ", ".join(memory[-3:])
+
+    elif any(op in text for op in ['+', '-', '*', '/']):
+
+        try:
+            result = eval(text)
+            return f"Result: {result}"
+
+        except:
+            return "Invalid mathematical expression."
+
+    elif text == "exit":
+        return "Chat ended."
+
+    else:
+
+        responses = [
+            "Interesting!",
+            "I understand.",
+            "Can you explain more?",
+            "That's good to know.",
+            "I am learning from our conversation."
+        ]
+
+        return random.choice(responses)
+
+
+print("\n========== AI CHATBOT ==========\n")
+
+while True:
+
+    user_message = input("You: ").strip()
+
+    if user_message == "":
+        continue
+
+
+    if user_message.lower() == "exit":
+        print("Chatbot: Chat ended.")
+        break
+
+    memory.append(user_message)
+
+    if len(memory) > 5:
+        memory.pop(0)
+
+    bot_reply = chatbot_response(user_message)
+
+    print("Chatbot:", bot_reply)
