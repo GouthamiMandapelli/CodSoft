@@ -7,7 +7,6 @@ draws = 0
 board = [" " for _ in range(9)]
 
 def print_board():
-
     print()
 
     for i in range(9):
